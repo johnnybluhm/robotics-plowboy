@@ -15,19 +15,120 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.12681603151766807 -0.9879931881617241 -0.08824485421905096 5.179225418475241
-  position 14.99046098230693 4.021685603396025 5.61975989638119
+  orientation 0.01602925611655512 0.9647740534462098 0.2625911056096907 3.2215771499146033
+  position 1.945881166629749 14.779495929135855 -23.66319417558394
   followSmoothness 0
 }
 Ball {
-  translation 0.783616 2.0325 -5.02879
-  radius 0.2
+  translation 2.77055 1.0125 -3.05671
+  rotation 0 1 0 -2.8797953071795863
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.53746 1.0125 -2.85509
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(3)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.96501 1.0125 -2.42166
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(4)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.01726 1.0125 -1.16113
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(5)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.7015 1.0125 -1.34098
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(6)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.54851 1.0125 -1.59411
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(7)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 1.65213 1.0125 -2.5786
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(8)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 1.88557 1.0125 -1.67955
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(9)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.02278 1.0125 -2.04683
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(10)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.76229 1.0125 -2.13721
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(11)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.50391 1.0125 -1.89861
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(12)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.2912 1.0125 -2.39654
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(13)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.15118 1.0125 -2.53374
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(14)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 1.86815 1.0125 -3.09684
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(1)"
+  color 1 1 1
+  radius 0.1
+}
+Ball {
+  translation 2.33904 1.0125 -3.09511
+  rotation 0 1 0 -2.8797953071795863
+  name "ball(2)"
+  color 1 1 1
+  radius 0.1
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 DEF FLOOR Solid {
+  translation -0.710483 -3.90799e-14 -0.820107
   children [
     DEF PLANE_SHAPE Shape {
       appearance PBRAppearance {
@@ -50,19 +151,12 @@ DEF FLOOR Solid {
   ]
   boundingObject USE PLANE_SHAPE
 }
-Moose {
-  translation 0 1 0
-  controller "plow"
-  bodySlot [
-    Camera {
-      translation -2 0 0
-    }
-  ]
-}
 CitroenCZero {
-  translation 2.30614 0.4 -7.21385
+  translation 2.23202 0.4 -10.7004
+  controller "plow"
   sensorsSlotFront [
     Camera {
     }
   ]
+  frontSpotLights TRUE
 }
