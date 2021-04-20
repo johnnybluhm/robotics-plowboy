@@ -1,35 +1,40 @@
 """plow controller."""
-
-# You may need to import some classes of the controller module. Ex:
-#  from controller import Robot, Motor, DistanceSensor
 from controller import Robot
+from vehicle import Car, Driver
 
 # create the Robot instance.
-robot = Robot()
+driver = Driver()
 
-camera = robot.getDevice("camera")
+print(driver.getType())
+camera = driver.getDevice("camera")
 
-# get the time step of the current world.
-timestep = int(robot.getBasicTimeStep())
+# get the time step of the current world
+TIME_STEP = int(driver.getBasicTimeStep())
+camera.enable(TIME_STEP)
 
-camera.enable(timestep)
-# You should insert a getDevice-like function in order to get the
-# instance of a device of the robot. Something like:
-#  motor = robot.getMotor('motorname')
-#  ds = robot.getDistanceSensor('dsname')
-#  ds.enable(timestep)
-print("hello")
+MAX_SPEED = 10 #km/h?
+
 # Main loop:
 # - perform simulation steps until Webots is stopping the controller
-while robot.step(timestep) != -1:
-    # Read the sensors:
-    # Enter here functions to read sensor data, like:
-    #  val = ds.getValue()
-    print("a")
-    # Process sensor data here.
+while driver.step() != -1:
+	current_steer_angle = driver.getSteeringAngle()
+	turn_angle = 0.17 #radians 
 
-    # Enter here functions to send actuator commands, like:
-    #  motor.setPosition(10.0)
-    pass
+	if mode == 'manual':
+		key = keyboard.getKey()
+		while(keyboard.getKey() != -1): pass
+		if key == keyboard.LEFT:
+			new_angle = current_steer_angle - turn_angle
+		elif key == keyboard.RIGHT:
+			new_angle = current_steer_angle + turn_angle
+		elif key == keyboard.UP:
+			
+		elif key == keyboard.DOWN:
 
+		elif key == ord(' '):
+			vL = 0
+			vR = 0
+  
+	driver.setCruisingSpeed()	
+	print(camera.getImage())
 # Enter here exit cleanup code.

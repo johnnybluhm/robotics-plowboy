@@ -15,9 +15,13 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.07465601783797808 0.9946691236320351 0.07113236600630342 4.624741090645856
-  position -10.196527474423434 2.379475581232698 0.4876309493062545
+  orientation 0.12681603151766807 -0.9879931881617241 -0.08824485421905096 5.179225418475241
+  position 14.99046098230693 4.021685603396025 5.61975989638119
   followSmoothness 0
+}
+Ball {
+  translation 0.783616 2.0325 -5.02879
+  radius 0.2
 }
 TexturedBackground {
 }
@@ -48,9 +52,17 @@ DEF FLOOR Solid {
 }
 Moose {
   translation 0 1 0
+  controller "plow"
   bodySlot [
     Camera {
-      translation 2 0 0
+      translation -2 0 0
+    }
+  ]
+}
+CitroenCZero {
+  translation 2.30614 0.4 -7.21385
+  sensorsSlotFront [
+    Camera {
     }
   ]
 }
