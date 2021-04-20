@@ -1,0 +1,56 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    "Boomer 3050 Tractor"
+  ]
+  title "Boomer 3050 Tractor"
+  ERP 0.7
+  basicTimeStep 20
+  coordinateSystem "NUE"
+  lineScale 1
+  contactProperties [
+    ContactProperties {
+      softCFM 0.0001
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.07465601783797808 0.9946691236320351 0.07113236600630342 4.624741090645856
+  position -10.196527474423434 2.379475581232698 0.4876309493062545
+  followSmoothness 0
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+DEF FLOOR Solid {
+  children [
+    DEF PLANE_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/dry_grass.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+        textureTransform TextureTransform {
+          scale 200 200
+        }
+      }
+      geometry Plane {
+        size 1000 1000
+      }
+      castShadows FALSE
+    }
+  ]
+  boundingObject USE PLANE_SHAPE
+}
+Moose {
+  translation 0 1 0
+  bodySlot [
+    Camera {
+      translation 2 0 0
+    }
+  ]
+}
