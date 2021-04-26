@@ -16,24 +16,31 @@ RectangleArena {
   wallHeight 0.05
 }
 E-puck {
-  controller "epuck_go_forward"
+  hidden translation_1 -0.026225970408036647 0.02009111150646079 -0.00021787294923321772
+  hidden rotation_1 0.9735023540810038 -0.06756110048835122 0.21846890922862908 6.224517396128007
+  hidden translation_2 0.026226046585584258 0.020169646749732158 -0.00015405435638462283
+  hidden rotation_2 -0.9714361278036681 0.19414146985892586 -0.13645856249730678 0.056461721731312975
+  controller "plow_epuck"
   turretSlot [
     SolidBox {
       translation -0.05 -0.02 0.05
       size 0.01 0.04 0.03
       physics Physics {
+        mass 0.1
       }
     }
     SolidBox {
       translation 0.05 -0.02 0.05
       size 0.01 0.04 0.03
       physics Physics {
+        mass 0.1
       }
     }
     SolidBox {
       translation 0 -0.02 0.03
       size 0.1 0.04 0.01
       physics Physics {
+        mass 0.1
       }
     }
   ]

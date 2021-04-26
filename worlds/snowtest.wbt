@@ -21,10 +21,14 @@ RectangleArena {
   }
 }
 E-puck {
-  translation 0.0839565 0 -0.156559
-  rotation 0 1 0 3.04506
+  translation 0.0504517 0 0.0468636
+  rotation 0 1 0 -1.541335307179586
   controller "plow_epuck"
+  camera_width 100
+  camera_height 100
   turretSlot [
+    GPS {
+    }
     PointLight {
       attenuation 0 0 1
       location 0 0.3 0

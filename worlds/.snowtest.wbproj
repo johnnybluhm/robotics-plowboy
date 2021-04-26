@@ -7,4 +7,4 @@ centralWidgetVisible: 1
 orthographicViewHeight: 1
 textFiles: 5 "controllers/plow/plow.py" "../CSCI3302_Lab5/controllers/lab5_controller/lab5_controller.py" "controllers/plow_epuck/plow_epuck.py" "../CSCI3302_Lab3/CSCI3302_Lab3/controllers/lab3/lab3.py" "../lab2/csci3302_lab2.py" "../CSCI3302_Lab4/CSCI3302_Lab4/controllers/csci3302_lab4/csci3302_lab4.py"
 consoles: Console:All:All
-renderingDevicePerspectives: e-puck:camera;1;4.71795;0;0
+renderingDevicePerspectives: e-puck:camera;1;3.11;0;0
