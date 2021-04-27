@@ -51,7 +51,11 @@ target_y = 0.35
 target_x = 0.35
 TIMER_COUNT = 0
 
-distance_to_white_values = {} #0.3m to 20white cpunt
+distance_to_white_values = {} 
+#0.3m to 20 white cpunt
+#0.05m to 270 white ocunt
+#0.031 to 1645 white count
+#.15 to 70
 # - perform simulation steps until Webots is stopping the controller
 while robot.step(TIME_STEP) != -1:
 
