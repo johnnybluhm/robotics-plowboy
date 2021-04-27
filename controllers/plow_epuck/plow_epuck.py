@@ -5,6 +5,8 @@
 from controller import Robot, GPS
 import math
 
+
+
 # create the Robot instance.
 robot = Robot()
 
@@ -48,14 +50,16 @@ current_target = 0
 target_y = 0.35
 target_x = 0.35
 TIMER_COUNT = 0
+
+distance_to_white_values = {} #0.3m to 20white cpunt
 # - perform simulation steps until Webots is stopping the controller
 while robot.step(TIME_STEP) != -1:
 
 	gps_x = gps.getValues()[0]
 	gps_y = gps.getValues()[2]
 	
-	#print("x "+str(gps_x))
-	#print("y "+str(gps_y))
+	print("x "+str(gps_x))
+	print("y "+str(gps_y))
 	if mode == 'manual':
 		key = keyboard.getKey()
 		while (keyboard.getKey() != -1): pass
@@ -114,7 +118,7 @@ while robot.step(TIME_STEP) != -1:
 				white_count += 1
 			if red < 50 and green > 150 and blue < 50:
 				green_count += 1
-	#print("white count chunk 2 "+str(white_count))
+	print("white count chunk 2 "+str(white_count))
 	#print("grey count chunk 2 " + str(green_count))
 	if (white_count > WHITE_OBJECT_THRESHOLD):
 		white_list[1] = True
@@ -204,10 +208,11 @@ while robot.step(TIME_STEP) != -1:
 			right_speed = MAX_SPEED
 			left_speed = MAX_SPEED
 	if mode == 'stupid_plow':
-		left_speed = MAX_SPEED / 2
-		right_speed =-MAX_SPEED / 2
+		pass
+		"""left_speed = MAX_SPEED / 2
+		right_speed =-MAX_SPEED / 2"""
 
-		if white_list[1] == True:
+		"""if white_list[1] == True:
 			#push snow forward for 1 second			
 			left_speed = MAX_SPEED
 			right_speed = MAX_SPEED
@@ -220,7 +225,7 @@ while robot.step(TIME_STEP) != -1:
 			leftMotor.setVelocity(left_speed)
 			rightMotor.setVelocity(right_speed)
 			for i in range(0,100):
-				robot.step(TIME_STEP)
+				robot.step(TIME_STEP)"""
 
 	if right_speed > MAX_SPEED:
 		right_speed = MAX_SPEED
