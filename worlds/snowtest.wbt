@@ -4,8 +4,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.5066087307770465 -0.6654501006024495 -0.5482004720069658 4.337720551881054
-  position 0.30566523408110574 2.1391566755092533 -0.06333309939003065
+  orientation -0.19224823483664014 -0.9393712871198767 -0.28394048872420846 1.78423221399801
+  position -0.22938477836341192 0.28384872645018855 -0.012376259551137775
 }
 TexturedBackground {
 }
@@ -136,6 +136,24 @@ E-puck {
   camera_width 100
   camera_height 100
   turretSlot [
+    SolidBox {
+      translation 0.05 -0.02 -0.05
+      size 0.01 0.02 0.03
+      physics Physics {
+      }
+    }
+    SolidBox {
+      translation -0.05 -0.02 -0.05
+      size 0.01 0.02 0.03
+      physics Physics {
+      }
+    }
+    SolidBox {
+      translation 0 -0.02 -0.04
+      size 0.1 0.02 0.01
+      physics Physics {
+      }
+    }
     GPS {
     }
     PointLight {
