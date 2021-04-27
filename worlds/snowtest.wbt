@@ -20,6 +20,115 @@ RectangleArena {
     }
   }
 }
+Ball {
+  translation -0.2 0.0325 -0.11
+  name "ball(4)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.2 0.0325 -0.11
+  name "ball(5)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.0349929 0.0325 0.330019
+  name "ball(6)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.218791 0.0325 0.279098
+  name "ball(7)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.341834 0.0325 0.220186
+  name "ball(10)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.138506 0.0325 0.383484
+  name "ball(11)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.298828 0.0325 0.207702
+  name "ball(13)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.297938 0.0325 -0.0817098
+  name "ball(14)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.205608 0.0325 -0.200955
+  name "ball(15)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.17239 0.0325 -0.00805265
+  rotation 0 1 0 0.785398
+  name "ball(16)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.0683192 0.0325 -0.282293
+  name "ball(12)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.112422 0.0325 0.236167
+  name "ball(17)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
 E-puck {
   translation 0.0504517 0 0.0468636
   rotation 0 1 0 1.54135
@@ -45,8 +154,26 @@ Ball {
   angularDamping 0.1
 }
 Ball {
-  translation -0.2 0.0325 -0.11
+  translation -0.279123 0.0325 0.0896925
   name "ball(8)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.213541 0.0325 0.133578
+  name "ball(2)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.11964 0.0325 -0.0486382
+  name "ball(3)"
   color 1 1 1
   radius 0.015
   mass 0.005

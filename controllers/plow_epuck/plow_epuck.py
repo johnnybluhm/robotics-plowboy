@@ -17,8 +17,8 @@ MAX_SPEED = 6.28
 
 
 TIME_STEP = int(robot.getBasicTimeStep())
-WHITE_OBJECT_THRESHOLD = 10  # white_pixels
-GREEN_OBJECT_THRESHOLD = 450  # green_pixels
+WHITE_OBJECT_THRESHOLD = 20  # white_pixels
+GREEN_OBJECT_THRESHOLD = 1300  # green_pixels
 REACHED_TARGET_THRESHOLD = 0.01 #m
 camera = robot.getDevice("camera")
 camera.enable(TIME_STEP)
@@ -33,7 +33,7 @@ right_speed = 0  # rad/s?
 #mode = 'snow_seeker'
 #mode = 'inverse_kinematics'
 #mode = 'wall_avoidance'
-#mode = 'stupid_plow'
+mode = 'stupid_plow'
 #mode = 'push_snow'
 leftMotor = robot.getDevice("left wheel motor")
 rightMotor = robot.getDevice("right wheel motor")
@@ -70,13 +70,13 @@ while robot.step(TIME_STEP) != -1:
 	white_counts = []
 	gps_x = gps.getValues()[0]
 	gps_y = gps.getValues()[2]
-	if loop_count == 0:
+	"""if loop_count == 0:
 		target_y-=gps_y
 		target_x-=gps_x
-		loop_count = 1
-	print("x "+str(gps_x))
-	print("y "+str(gps_y))
-	print(target_x)
+		loop_count = 1"""
+	#print("x "+str(gps_x))
+	#print("y "+str(gps_y))
+	#print(target_x)
 	if mode == 'manual':
 		key = keyboard.getKey()
 		while (keyboard.getKey() != -1): pass
@@ -119,7 +119,7 @@ while robot.step(TIME_STEP) != -1:
 			if red < 50 and green > 150 and blue < 50:
 				green_count += 1
 	#print("white count chunk 1 "+str(white_count))
-	print("grey count chunk 1 " + str(green_count))
+	#print("grey count chunk 1 " + str(green_count))
 	white_counts.append(white_count)
 	if (white_count > WHITE_OBJECT_THRESHOLD):
 		white_list[0] = True
@@ -138,7 +138,7 @@ while robot.step(TIME_STEP) != -1:
 				green_count += 1
 	#print("white count chunk 2 "+str(white_count))
 	white_counts.append(white_count)
-	print("grey count chunk 2 " + str(green_count))
+	#print("grey count chunk 2 " + str(green_count))
 	if (white_count > WHITE_OBJECT_THRESHOLD):
 		white_list[1] = True
 	if (green_count > GREEN_OBJECT_THRESHOLD):
@@ -155,14 +155,14 @@ while robot.step(TIME_STEP) != -1:
 			if red < 50 and green > 150 and blue < 50:
 				green_count += 1
 	#print("white count chunk 3 "+str(white_count))
-	print("grey count chunk 3 " + str(green_count))
+	#print("grey count chunk 3 " + str(green_count))
 	white_counts.append(white_count)
 	if (white_count > WHITE_OBJECT_THRESHOLD):
 		white_list[2] = True
 	if (green_count > GREEN_OBJECT_THRESHOLD):
 		green_list[2] = True
-	print(white_list)
-	print(green_list)
+	#print(white_list)
+	#print(green_list)
 
 	# can now program controller based off camera data
 	if mode == 'inverse_kinematics':		
@@ -171,8 +171,8 @@ while robot.step(TIME_STEP) != -1:
 		#print("Seeking snow")
 		rho = math.sqrt( (target_y- pose_y)**2  +  (target_x-pose_x)**2 )
 		alpha = math.atan2(target_y-pose_y, target_x -pose_x) + pose_theta
-		print("rho "+str(rho))
-		print("alpha "+str(alpha))
+		#print("rho "+str(rho))
+		#print("alpha "+str(alpha))
 		if rho < REACHED_TARGET_THRESHOLD:
 			current_target+=1
 
@@ -240,12 +240,13 @@ while robot.step(TIME_STEP) != -1:
 		right_speed =-MAX_SPEED / 2
 
 		if white_list[1] == True:
+			mode = 'push_snow'
 			#push snow forward for 1 second			
-			left_speed = MAX_SPEED
+			"""left_speed = MAX_SPEED
 			right_speed = MAX_SPEED
 			leftMotor.setVelocity(left_speed)
 			rightMotor.setVelocity(right_speed)
-			"""for i in range(0,200):
+			for i in range(0,200):
 				robot.step(TIME_STEP)
 			left_speed = -MAX_SPEED
 			right_speed = -MAX_SPEED
@@ -261,7 +262,13 @@ while robot.step(TIME_STEP) != -1:
 			left_speed = MAX_SPEED
 			right_speed = MAX_SPEED
 			push_snow_count+=1
-	if mode = 'reverse':
+	if mode == 'reverse':
+		if(push_snow_count == 0):
+			mode = 'stupid_plow'
+		else:
+			left_speed = -MAX_SPEED
+			right_speed = -MAX_SPEED
+			push_snow_count -= 1
 	if right_speed > MAX_SPEED:
 		right_speed = MAX_SPEED
 	if left_speed > MAX_SPEED:
@@ -283,8 +290,8 @@ while robot.step(TIME_STEP) != -1:
 	dsl = vL / MAX_SPEED * EPUCK_MAX_WHEEL_SPEED
 	ds = (dsr + dsl) / 2.0
 
-	pose_y += ds * math.sin(pose_theta)
+	pose_y -= ds * math.sin(pose_theta)
 	pose_x -= ds * math.cos(pose_theta)
 	pose_theta -= (dsr - dsl) / EPUCK_AXLE_DIAMETER
-	print("X: %f Y: %f Theta: %f " % (pose_x, pose_y, pose_theta))
+	#print("X: %f Y: %f Theta: %f " % (pose_x, pose_y, pose_theta))
 # Enter here exit cleanup code.
