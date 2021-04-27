@@ -4,6 +4,7 @@
 #  from controller import Robot, Motor, DistanceSensor
 from controller import Robot, GPS
 import math
+import numpy as np
 
 
 
@@ -16,9 +17,9 @@ MAX_SPEED = 6.28
 
 
 TIME_STEP = int(robot.getBasicTimeStep())
-WHITE_OBJECT_THRESHOLD = 30  # white_pixels
+WHITE_OBJECT_THRESHOLD = 10  # white_pixels
 GREEN_OBJECT_THRESHOLD = 450  # green_pixels
-REACHED_TARGET_THRESHOLD = 0.1 #m
+REACHED_TARGET_THRESHOLD = 0.01 #m
 camera = robot.getDevice("camera")
 camera.enable(TIME_STEP)
 gps = robot.getDevice("gps")
@@ -32,7 +33,8 @@ right_speed = 0  # rad/s?
 #mode = 'snow_seeker'
 #mode = 'inverse_kinematics'
 #mode = 'wall_avoidance'
-mode = 'stupid_plow'
+#mode = 'stupid_plow'
+#mode = 'push_snow'
 leftMotor = robot.getDevice("left wheel motor")
 rightMotor = robot.getDevice("right wheel motor")
 leftMotor.setPosition(float('inf'))
@@ -50,20 +52,31 @@ current_target = 0
 target_y = 0.35
 target_x = 0.35
 TIMER_COUNT = 0
+white_counts = []
 
 distance_to_white_values = {} 
-#0.3m to 20 white cpunt
-#0.05m to 270 white ocunt
 #0.031 to 1645 white count
+#0.05m to 270 white count
+#0.1m to 130
 #.15 to 70
+#.2m to 50
+#0.248 to 31
+#0.3m to 20 white cpunt
+loop_count = 0
+push_snow_count = 0
 # - perform simulation steps until Webots is stopping the controller
 while robot.step(TIME_STEP) != -1:
 
+	white_counts = []
 	gps_x = gps.getValues()[0]
 	gps_y = gps.getValues()[2]
-	
+	if loop_count == 0:
+		target_y-=gps_y
+		target_x-=gps_x
+		loop_count = 1
 	print("x "+str(gps_x))
 	print("y "+str(gps_y))
+	print(target_x)
 	if mode == 'manual':
 		key = keyboard.getKey()
 		while (keyboard.getKey() != -1): pass
@@ -106,7 +119,8 @@ while robot.step(TIME_STEP) != -1:
 			if red < 50 and green > 150 and blue < 50:
 				green_count += 1
 	#print("white count chunk 1 "+str(white_count))
-	#print("grey count chunk 1 " + str(green_count))
+	print("grey count chunk 1 " + str(green_count))
+	white_counts.append(white_count)
 	if (white_count > WHITE_OBJECT_THRESHOLD):
 		white_list[0] = True
 	if (green_count > GREEN_OBJECT_THRESHOLD):
@@ -122,8 +136,9 @@ while robot.step(TIME_STEP) != -1:
 				white_count += 1
 			if red < 50 and green > 150 and blue < 50:
 				green_count += 1
-	print("white count chunk 2 "+str(white_count))
-	#print("grey count chunk 2 " + str(green_count))
+	#print("white count chunk 2 "+str(white_count))
+	white_counts.append(white_count)
+	print("grey count chunk 2 " + str(green_count))
 	if (white_count > WHITE_OBJECT_THRESHOLD):
 		white_list[1] = True
 	if (green_count > GREEN_OBJECT_THRESHOLD):
@@ -140,13 +155,14 @@ while robot.step(TIME_STEP) != -1:
 			if red < 50 and green > 150 and blue < 50:
 				green_count += 1
 	#print("white count chunk 3 "+str(white_count))
-	#print("grey count chunk 3 " + str(green_count))
+	print("grey count chunk 3 " + str(green_count))
+	white_counts.append(white_count)
 	if (white_count > WHITE_OBJECT_THRESHOLD):
 		white_list[2] = True
 	if (green_count > GREEN_OBJECT_THRESHOLD):
 		green_list[2] = True
 	print(white_list)
-	#print(green_list)
+	print(green_list)
 
 	# can now program controller based off camera data
 	if mode == 'inverse_kinematics':		
@@ -155,9 +171,11 @@ while robot.step(TIME_STEP) != -1:
 		#print("Seeking snow")
 		rho = math.sqrt( (target_y- pose_y)**2  +  (target_x-pose_x)**2 )
 		alpha = math.atan2(target_y-pose_y, target_x -pose_x) + pose_theta
-
+		print("rho "+str(rho))
+		print("alpha "+str(alpha))
 		if rho < REACHED_TARGET_THRESHOLD:
 			current_target+=1
+
 			"""if(current_target == 4):
 				current_target = 0
 			target_x = figure_8_path[current_target][0]
@@ -212,25 +230,38 @@ while robot.step(TIME_STEP) != -1:
 			right_speed = MAX_SPEED
 			left_speed = MAX_SPEED
 	if mode == 'stupid_plow':
-		pass
-		"""left_speed = MAX_SPEED / 2
-		right_speed =-MAX_SPEED / 2"""
 
-		"""if white_list[1] == True:
+		"""w = white_counts[1]
+		print(w)
+		#distance_based_off_white = 0.00000056*w**2-0.001*w + 0.2667
+		distance_based_off_white = 0.48 - 0.044 * 
+		print(distance_based_off_white)"""
+		left_speed = MAX_SPEED / 2
+		right_speed =-MAX_SPEED / 2
+
+		if white_list[1] == True:
 			#push snow forward for 1 second			
 			left_speed = MAX_SPEED
 			right_speed = MAX_SPEED
 			leftMotor.setVelocity(left_speed)
 			rightMotor.setVelocity(right_speed)
-			for i in range(0,100):
+			"""for i in range(0,200):
 				robot.step(TIME_STEP)
 			left_speed = -MAX_SPEED
 			right_speed = -MAX_SPEED
 			leftMotor.setVelocity(left_speed)
 			rightMotor.setVelocity(right_speed)
-			for i in range(0,100):
+			for i in range(0,200):
 				robot.step(TIME_STEP)"""
 
+	if mode == 'push_snow':
+		if green_list[1] == True:
+			mode = 'reverse'
+		else:
+			left_speed = MAX_SPEED
+			right_speed = MAX_SPEED
+			push_snow_count+=1
+	if mode = 'reverse':
 	if right_speed > MAX_SPEED:
 		right_speed = MAX_SPEED
 	if left_speed > MAX_SPEED:
@@ -252,8 +283,8 @@ while robot.step(TIME_STEP) != -1:
 	dsl = vL / MAX_SPEED * EPUCK_MAX_WHEEL_SPEED
 	ds = (dsr + dsl) / 2.0
 
-	pose_y += ds * math.cos(pose_theta)
-	pose_x += ds * math.sin(pose_theta)
-	pose_theta += (dsr - dsl) / EPUCK_AXLE_DIAMETER
-	#print("X: %f Y: %f Theta: %f " % (pose_x, pose_y, pose_theta))
+	pose_y += ds * math.sin(pose_theta)
+	pose_x -= ds * math.cos(pose_theta)
+	pose_theta -= (dsr - dsl) / EPUCK_AXLE_DIAMETER
+	print("X: %f Y: %f Theta: %f " % (pose_x, pose_y, pose_theta))
 # Enter here exit cleanup code.

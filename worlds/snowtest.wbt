@@ -22,7 +22,7 @@ RectangleArena {
 }
 E-puck {
   translation 0.0504517 0 0.0468636
-  rotation 0 -1 0 -2.3807453071795863
+  rotation 0 1 0 1.54135
   controller "plow_epuck"
   camera_width 100
   camera_height 100
