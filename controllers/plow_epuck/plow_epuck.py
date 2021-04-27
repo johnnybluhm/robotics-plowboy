@@ -17,7 +17,7 @@ MAX_SPEED = 6.28
 
 
 TIME_STEP = int(robot.getBasicTimeStep())
-WHITE_OBJECT_THRESHOLD = 20  # white_pixels
+WHITE_OBJECT_THRESHOLD = 12  # white_pixels
 GREEN_OBJECT_THRESHOLD = 1300  # green_pixels
 REACHED_TARGET_THRESHOLD = 0.01 #m
 camera = robot.getDevice("camera")
@@ -55,13 +55,6 @@ TIMER_COUNT = 0
 white_counts = []
 
 distance_to_white_values = {} 
-#0.031 to 1645 white count
-#0.05m to 270 white count
-#0.1m to 130
-#.15 to 70
-#.2m to 50
-#0.248 to 31
-#0.3m to 20 white cpunt
 loop_count = 0
 push_snow_count = 0
 # - perform simulation steps until Webots is stopping the controller
@@ -70,10 +63,6 @@ while robot.step(TIME_STEP) != -1:
 	white_counts = []
 	gps_x = gps.getValues()[0]
 	gps_y = gps.getValues()[2]
-	"""if loop_count == 0:
-		target_y-=gps_y
-		target_x-=gps_x
-		loop_count = 1"""
 	#print("x "+str(gps_x))
 	#print("y "+str(gps_y))
 	#print(target_x)
@@ -110,11 +99,11 @@ while robot.step(TIME_STEP) != -1:
 	chunk_pixels = width / 3 * height / 2
 
 	for x in range(0, int(width / 3)):  # 1st chunk of image
-		for y in range(0, int(height)):  # only need bottom half of image
+		for y in range(0, int(height)):  
 			red = image[x][y][0]
 			green = image[x][y][1]
 			blue = image[x][y][2]
-			if red > 240 and green > 240 and blue > 240:
+			if red > 240 and green > 240 and blue > 240 and (abs(red-blue-green) <6):
 				white_count += 1
 			if red < 50 and green > 150 and blue < 50:
 				green_count += 1
@@ -128,7 +117,15 @@ while robot.step(TIME_STEP) != -1:
 	white_count = 0
 	green_count = 0
 	for x in range(int(width / 3), int(2 / 3 * width)):  # 2nd chunk of image
-		for y in range(0, int(height)):  # only need bottom half of image
+		for y in range(0, 40):  
+			red = image[x][y][0]
+			green = image[x][y][1]
+			blue = image[x][y][2]
+			if red > 200 and green > 200 and blue > 200 and (abs(red-blue-green) <6):
+				white_count += 1
+			if red < 50 and green > 150 and blue < 50:
+				green_count += 1
+		for y in range(50, int(height)):  
 			red = image[x][y][0]
 			green = image[x][y][1]
 			blue = image[x][y][2]
@@ -176,47 +173,17 @@ while robot.step(TIME_STEP) != -1:
 		if rho < REACHED_TARGET_THRESHOLD:
 			current_target+=1
 
-			"""if(current_target == 4):
-				current_target = 0
-			target_x = figure_8_path[current_target][0]
-			target_y = figure_8_path[current_target][1]"""
-			#left_speed = 0
-			#right_speed = 0
-
 		if(abs(alpha)>0.25):
 			pos_scalar=0
 			angular_scalar= -10*alpha
 		else:
 			pos_scalar= 10*rho
 			angular_scalar= -5*alpha
-
-		"""if(alpha== 0):
-			angular_scalar = 0
-			pos_scalar = 10*rho
-		elif abs(alpha) <1.57 and abs(alpha) > 0.7:
-			angular_scalar = -10*alpha #rotate faster
-			pos_scalar = 1*rho
-		elif abs(alpha)< 0.7 and abs(alpha) > 0.3:
-			angular_scalar = -5* alpha
-			pos_scalar = 5* rho
-		else:
-			angular_scalar = -2.5*alpha
-			pos_scalar = 2.5*rho"""
 						
 		left_speed = (2* pos_scalar - angular_scalar*EPUCK_AXLE_DIAMETER)/2		
 		right_speed = (2* pos_scalar + angular_scalar*EPUCK_AXLE_DIAMETER)/2
 
 		#print("alpha: "+str(alpha)+"\nRho: "+str(rho))
-	"""if white_list[1] == True:
-		# drive toward snow
-		mode = 'inverse_kinematics'
-	elif white_list[0] == True:
-		# turn left
-		mode = 'inverse_kinematics'
-	elif white_list[2] == True:
-		# turn right
-		mode = 'inverse_kinematics'"""
-
 
 	if mode == 'wall_avoidance':
 		# map navigation
@@ -231,29 +198,12 @@ while robot.step(TIME_STEP) != -1:
 			left_speed = MAX_SPEED
 	if mode == 'stupid_plow':
 
-		"""w = white_counts[1]
-		print(w)
-		#distance_based_off_white = 0.00000056*w**2-0.001*w + 0.2667
-		distance_based_off_white = 0.48 - 0.044 * 
-		print(distance_based_off_white)"""
 		left_speed = MAX_SPEED / 2
 		right_speed =-MAX_SPEED / 2
 
 		if white_list[1] == True:
 			mode = 'push_snow'
-			#push snow forward for 1 second			
-			"""left_speed = MAX_SPEED
-			right_speed = MAX_SPEED
-			leftMotor.setVelocity(left_speed)
-			rightMotor.setVelocity(right_speed)
-			for i in range(0,200):
-				robot.step(TIME_STEP)
-			left_speed = -MAX_SPEED
-			right_speed = -MAX_SPEED
-			leftMotor.setVelocity(left_speed)
-			rightMotor.setVelocity(right_speed)
-			for i in range(0,200):
-				robot.step(TIME_STEP)"""
+
 
 	if mode == 'push_snow':
 		if green_list[1] == True:
