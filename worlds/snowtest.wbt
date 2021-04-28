@@ -130,7 +130,7 @@ Ball {
   angularDamping 0.1
 }
 E-puck {
-  translation 0.0504517 0 0.0468636
+  translation -0.011573 -6.66134e-16 0.0291128
   rotation 0 1 0 1.54135
   controller "plow_epuck"
   camera_width 100

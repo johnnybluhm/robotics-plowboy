@@ -17,7 +17,8 @@ MAX_SPEED = 6.28
 
 
 TIME_STEP = int(robot.getBasicTimeStep())
-WHITE_OBJECT_THRESHOLD = 15  # white_pixels
+WHITE_OBJECT_THRESHOLD = 35
+MAXIMUM_WHITE_OBJECT_THRESHOLD = 40  # white_pixels
 GREEN_OBJECT_THRESHOLD = 1300  # green_pixels
 REACHED_TARGET_THRESHOLD = 0.01 #m
 camera = robot.getDevice("camera")
@@ -58,6 +59,7 @@ white_counts = []
 distance_to_white_values = {} 
 loop_count = 0
 push_snow_count = 0
+free_spin_count = 0
 # - perform simulation steps until Webots is stopping the controller
 while robot.step(TIME_STEP) != -1:
 
@@ -218,18 +220,25 @@ while robot.step(TIME_STEP) != -1:
 
 		left_speed = MAX_SPEED / 2
 		right_speed =-MAX_SPEED / 2
-
+		free_spin_count+=1
 		if white_list[1] == True and not abs(last_pose_theta-pose_theta) < .3:
 			if abs(last_pose_theta-pose_theta) < .1:
 				print("Same theta found")
+			free_spin_count = 0
 			mode = 'push_snow'
+		if free_spin_count > 62.5: #62.5 loop counts = 1 second
+			print("Raising threshold")
+			WHITE_OBJECT_THRESHOLD+=2
+			free_spin_count = 0
+			if WHITE_OBJECT_THRESHOLD > MAXIMUM_WHITE_OBJECT_THRESHOLD:
+				mode = 'stop'
 
 	if mode == 'stop':
 		print("stopped")
 		left_speed = 0
 		right_speed = 0
 	if mode == 'push_snow':
-		if greenheight == True:
+		if greenheight == True or green_list[1] == True or green_list[0] == True or green_list[2] == True:
 			mode = 'reverse'
 		else:
 			left_speed = MAX_SPEED
@@ -237,8 +246,6 @@ while robot.step(TIME_STEP) != -1:
 			push_snow_count+=1
 	if mode == 'reverse':
 		if(push_snow_count == 0):
-			if (whitenum < 3):
-				mode = 'stop'
 			mode = 'plow'
 			last_pose_theta = pose_theta
 		else:
