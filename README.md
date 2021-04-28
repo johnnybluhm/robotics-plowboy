@@ -8,4 +8,4 @@ Final project for robotics. This is an epuck that acts as a snowplow.
 
 # Other info
 - Other world files are failed implementations
-- plow.py is the vehicle controller we started on 
+- plow.py is the vehicle controller we started on

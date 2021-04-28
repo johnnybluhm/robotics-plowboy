@@ -6,15 +6,12 @@ from controller import Robot, GPS
 import math
 import numpy as np
 
-
-
 # create the Robot instance.
 robot = Robot()
 
 # ePuck Constants
 EPUCK_AXLE_DIAMETER = 0.053  # ePuck's wheels are 53mm apart.
 MAX_SPEED = 6.28
-
 
 TIME_STEP = int(robot.getBasicTimeStep())
 WHITE_OBJECT_THRESHOLD = 35
@@ -31,11 +28,8 @@ keyboard.enable(TIME_STEP)  # can change sampling period here
 left_speed = 0  # rad/s?
 right_speed = 0  # rad/s?
 #mode = 'manual'
-#mode = 'snow_seeker'
-#mode = 'inverse_kinematics'
-#mode = 'wall_avoidance'
 mode = 'plow'
-#mode = 'push_snow'
+
 leftMotor = robot.getDevice("left wheel motor")
 rightMotor = robot.getDevice("right wheel motor")
 leftMotor.setPosition(float('inf'))
@@ -179,43 +173,6 @@ while robot.step(TIME_STEP) != -1:
 	#print(green_list)
 
 	# can now program controller based off camera data
-
-	
-
-	if mode == 'inverse_kinematics':		
-		# Inverse kinematics
-		# error
-		#print("Seeking snow")
-		rho = math.sqrt( (target_y- pose_y)**2  +  (target_x-pose_x)**2 )
-		alpha = math.atan2(target_y-pose_y, target_x -pose_x) + pose_theta
-		#print("rho "+str(rho))
-		#print("alpha "+str(alpha))
-		if rho < REACHED_TARGET_THRESHOLD:
-			current_target+=1
-
-		if(abs(alpha)>0.25):
-			pos_scalar=0
-			angular_scalar= -10*alpha
-		else:
-			pos_scalar= 10*rho
-			angular_scalar= -5*alpha
-						
-		left_speed = (2* pos_scalar - angular_scalar*EPUCK_AXLE_DIAMETER)/2		
-		right_speed = (2* pos_scalar + angular_scalar*EPUCK_AXLE_DIAMETER)/2
-
-		#print("alpha: "+str(alpha)+"\nRho: "+str(rho))
-
-	if mode == 'wall_avoidance':
-		# map navigation
-		#print("Avoiding walls")
-		if green_list[1] == True and green_list[0] == True:
-			# wall, turn right
-			right_speed = -MAX_SPEED
-			left_speed = MAX_SPEED
-		else:
-			# go straight
-			right_speed = MAX_SPEED
-			left_speed = MAX_SPEED
 	if mode == 'plow':
 
 		left_speed = MAX_SPEED / 2
