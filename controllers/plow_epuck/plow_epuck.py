@@ -33,7 +33,7 @@ right_speed = 0  # rad/s?
 #mode = 'snow_seeker'
 #mode = 'inverse_kinematics'
 #mode = 'wall_avoidance'
-mode = 'stupid_plow'
+mode = 'plow'
 #mode = 'push_snow'
 leftMotor = robot.getDevice("left wheel motor")
 rightMotor = robot.getDevice("right wheel motor")
@@ -108,7 +108,7 @@ while robot.step(TIME_STEP) != -1:
 			red = image[x][y][0]
 			green = image[x][y][1]
 			blue = image[x][y][2]
-			if red > 22 and green > 220 and blue > 220 and (abs(red-blue-green) <6):
+			if red > 220 and green > 220 and blue > 220 and (abs(red-blue-green) <6):
 				white_count += 1
 			if red < 50 and green > 150 and blue < 50:
 				green_count += 1
@@ -214,7 +214,7 @@ while robot.step(TIME_STEP) != -1:
 			# go straight
 			right_speed = MAX_SPEED
 			left_speed = MAX_SPEED
-	if mode == 'stupid_plow':
+	if mode == 'plow':
 
 		left_speed = MAX_SPEED / 2
 		right_speed =-MAX_SPEED / 2
@@ -226,6 +226,8 @@ while robot.step(TIME_STEP) != -1:
 
 	if mode == 'stop':
 		print("stopped")
+		left_speed = 0
+		right_speed = 0
 	if mode == 'push_snow':
 		if greenheight == True:
 			mode = 'reverse'
@@ -237,7 +239,7 @@ while robot.step(TIME_STEP) != -1:
 		if(push_snow_count == 0):
 			if (whitenum < 3):
 				mode = 'stop'
-			mode = 'stupid_plow'
+			mode = 'plow'
 			last_pose_theta = pose_theta
 		else:
 			left_speed = -MAX_SPEED
