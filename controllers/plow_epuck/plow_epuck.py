@@ -226,7 +226,7 @@ while robot.step(TIME_STEP) != -1:
 				print("Same theta found")
 			free_spin_count = 0
 			mode = 'push_snow'
-		if free_spin_count > 62.5: #62.5 loop counts = 1 second
+		if free_spin_count > 30: #62.5 loop counts = 1 second
 			print("Raising threshold")
 			WHITE_OBJECT_THRESHOLD+=2
 			free_spin_count = 0

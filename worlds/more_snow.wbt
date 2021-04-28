@@ -1,0 +1,636 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  basicTimeStep 16
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.4399728439945492 -0.6908485698841222 -0.5737178313739351 2.0618260968580984
+  position -0.4309018057645906 1.9875328650926727 0.04709627603386019
+}
+TexturedBackground {
+  texture "noon_sunny_empty"
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorTileSize 0.25 0.25
+  wallHeight 0.05
+  wallAppearance Appearance {
+    material Material {
+      diffuseColor 0 1 0
+    }
+  }
+}
+Ball {
+  translation -0.220552 0.0325 -0.154053
+  name "ball(41)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.317427 0.0325 -0.0417699
+  name "ball(42)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.359997 0.0325 0.0743459
+  name "ball(43)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.331505 0.0325 0.17738
+  name "ball(44)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.341973 0.0325 0.134093
+  name "ball(45)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.348554 0.0325 -0.00671837
+  name "ball(46)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.407272 0.0325 0.00227192
+  name "ball(47)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.2779 0.0325 -0.0286704
+  name "ball(48)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.251229 0.3025 -0.0710012
+  name "ball(49)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.2 0.0325 -0.11
+  name "ball(4)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.2 0.0325 -0.11
+  name "ball(5)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.0349929 0.0325 0.330019
+  name "ball(6)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.277016 0.0325 0.328995
+  name "ball(7)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.115738 0.0325 0.278722
+  name "ball(50)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.136294 0.0325 0.232009
+  name "ball(51)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.374697 0.0325 0.364332
+  name "ball(52)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.358588 0.0325 0.315424
+  name "ball(53)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.305061 0.0325 0.415688
+  name "ball(54)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.291968 0.0325 0.300801
+  name "ball(55)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.257411 0.0325 0.264794
+  name "ball(56)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.19776 0.0325 0.363037
+  name "ball(57)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.0645056 0.0325 0.243554
+  rotation 0 1 0 -1.8325953071795862
+  name "ball(58)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.341834 0.0325 0.220186
+  name "ball(10)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.138506 0.0325 0.383484
+  name "ball(11)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.298828 0.0325 0.207702
+  name "ball(13)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.297938 0.0325 -0.0817098
+  name "ball(14)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.339776 0.0325 -0.0498596
+  name "ball(15)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.169805 0.0325 0.0731221
+  name "ball(18)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.149129 0.0325 -0.22171
+  name "ball(19)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.31902 0.0325 -0.225692
+  name "ball(20)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.191433 0.0325 -0.147574
+  name "ball(21)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.272832 0.0325 -0.243253
+  name "ball(22)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.218657 0.0325 -0.285638
+  name "ball(25)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.236637 0.0325 0.00241986
+  name "ball(26)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.205294 0.0325 -0.0748227
+  name "ball(27)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.287039 0.0325 -0.169969
+  name "ball(28)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.191725 0.0325 -0.0319437
+  name "ball(29)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.13013 0.0325 -0.186989
+  name "ball(31)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.16442 0.0325 -0.295295
+  name "ball(32)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.265343 0.0325 -0.281404
+  name "ball(33)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.0704223 0.0325 0.20346
+  name "ball(34)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.19324 0.0325 0.245222
+  name "ball(35)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.279635 0.0325 -0.148972
+  name "ball(36)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.12407 0.0325 -0.0414547
+  name "ball(37)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.0897098 0.0325 -0.20811
+  rotation 1 0 0 -1.047195307179586
+  name "ball(38)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.340199 0.0325 0.0305027
+  name "ball(40)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.17239 0.0325 -0.00805265
+  rotation 0 1 0 0.785398
+  name "ball(16)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.0683192 0.0325 -0.282293
+  name "ball(12)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.112422 0.0325 0.236167
+  name "ball(17)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+E-puck {
+  translation -0.011573 -6.66134e-16 0.0291128
+  rotation 0 1 0 1.54135
+  controller "plow_epuck"
+  camera_width 100
+  camera_height 100
+  turretSlot [
+    SolidBox {
+      translation 0.05 -0.02 -0.05
+      size 0.01 0.02 0.03
+      physics Physics {
+      }
+    }
+    SolidBox {
+      translation -0.05 -0.02 -0.05
+      size 0.01 0.02 0.03
+      physics Physics {
+      }
+    }
+    SolidBox {
+      translation 0 -0.02 -0.04
+      size 0.1 0.02 0.01
+      physics Physics {
+      }
+    }
+    GPS {
+    }
+    PointLight {
+      attenuation 0 0 1
+      location 0 0.3 0
+    }
+  ]
+}
+Ball {
+  translation -0.368805 0.0325 -0.286561
+  rotation 0 1 0 1.309
+  name "ball(1)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.337696 0.0325 -0.252489
+  name "ball(59)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.299044 0.0325 -0.34834
+  name "ball(60)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.188783 0.0325 -0.3596
+  name "ball(61)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.344866 0.0325 -0.319692
+  name "ball(62)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.247805 0.0325 -0.304332
+  name "ball(63)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.115148 0.0325 -0.38535
+  name "ball(64)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.391241 0.0325 -0.159469
+  name "ball(8)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.213541 0.0325 0.133578
+  name "ball(2)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.11964 0.0325 -0.0486382
+  name "ball(3)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.27 0.0325 -0.16
+  name "ball(9)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0.218801 0.0325 0.111883
+  name "ball(39)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation 0 0.0325 -0.14
+  name "ball(23)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.06 0.0325 -0.31
+  name "ball(24)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
+Ball {
+  translation -0.11 0.0325 -0.24
+  name "ball(30)"
+  color 1 1 1
+  radius 0.015
+  mass 0.005
+  linearDamping 0.02
+  angularDamping 0.1
+}
